@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="cmn-Hans-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>西洋汇招聘</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">西洋汇招聘</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('_index') }}">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">管理后台</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="alert alert-secondary my-3" role="alert">
+        <p>你的到场时间：2018-04-22 13：30</p>
+        <p>为了更科学地进行结构化考试，我们全过程采用无纸化面试，请按照以下指引填写完善你的资料。</p>
+    </div>
+    <form>
+        <div class="row">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">中文名：</label>
+                    <input type="email" class="form-control">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">性别：</label>
+                    <select name="" id="" class="form-control" title="">
+                        <option value="-">--</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">民族：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">籍贯：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">生日：</label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">联系电话：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">详细地址：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">工作年限：</label>
+                    <input type="text" class="form-control" placeholder="全职工作年限">
+                    <div class="input-group-append">
+                        <span class="input-group-text">年</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">婚姻状况：</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hunyin" value="未婚" id="hunyin-1">
+                            <label class="form-check-label" for="hunyin-1">未婚</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hunyin" value="已婚" id="hunyin-2">
+                            <label class="form-check-label" for="hunyin-2">已婚</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hunyin" value="离异" id="hunyin-3">
+                            <label class="form-check-label" for="hunyin-3">离异</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hunyin" value="丧偶" id="hunyin-4">
+                            <label class="form-check-label" for="hunyin-4">丧偶</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">生育状况：</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="shengyu" value="未育" id="shengyu-1">
+                            <label class="form-check-label" for="shengyu-1">未育</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="shengyu" value="在孕" id="shengyu-2">
+                            <label class="form-check-label" for="shengyu-2">在孕</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="shengyu" value="已育" id="shengyu-3">
+                            <label class="form-check-label" for="shengyu-3">已育</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">婚育计划：</label>
+                    <select name="" id="" class="form-control" title="">
+                        <option value="暂无">暂无</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src=""></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="{{ asset('bootstrap/css/bootstrap.min.css') }}"></script>
+<script>
+    $(function () {
+
+    })
+</script>
+</html>

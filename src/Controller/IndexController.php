@@ -15,10 +15,10 @@ class IndexController extends Controller
 {
     /**
      * 首页
-     * @Route("/")
+     * @Route("/", name="_index")
      */
     public function index()
     {
-        return new Response('tghrtgfrtfj');
+        return $this->render('index/index.html.twig');
     }
 }
