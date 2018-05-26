@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HelloController extends Controller
 {
     /**
-     * @Route("/hello/number")
+     * @Route("/hello/abc")
      */
     public function numberAction()
     {
@@ -21,6 +21,7 @@ class HelloController extends Controller
 
         return $this->render('hello/number.html.twig', [
             'number' => $number,
+            'link' => $url = $this->generateUrl('/hello/number', array('max' => 10)),
         ]);
 
         return new Response(
