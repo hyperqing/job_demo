@@ -1,0 +1,3 @@
+# app/config/parameters.yml
+parameters:
+    mongodb_server: "mongodb://localhost:27017"
