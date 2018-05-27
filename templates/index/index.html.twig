@@ -391,7 +391,7 @@
         </div>
     </div>
     <div class="submitting my-3 text-center">
-        <button class="btn btn-primary" id="submit-form">提交</button>
+        <button type="button" class="btn btn-primary" id="submit-btn">提交</button>
     </div>
     <footer class="text-center">
         <p>Copyright@2018</p>
@@ -405,7 +405,7 @@
 <script>
     $(function () {
         // 提交表单
-        $("#submit-form").click(function () {
+        $("#submit-btn").click(function () {
             $.ajax({
                 url: "{{ path("_candidate_save") }}",
                 type: "post",
