@@ -17,6 +17,7 @@ class IndexController extends Controller
      */
     public function index()
     {
+        phpinfo();
         return $this->render('index/index.html.twig');
     }
 }

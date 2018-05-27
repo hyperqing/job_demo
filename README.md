@@ -68,3 +68,18 @@ Mac安装pear
 
 PHP7 Mongdb 扩展安装
 >http://www.runoob.com/mongodb/php7-mongdb-tutorial.html
+
+```
+sudo pecl install mongodb
+```
+
+brew install homebrew/php/php71-mongodb
+
+直接用git clone 手动编译
+http://php.net/manual/zh/mongodb.installation.manual.php
+
+cd /etc
+cp php.ini.default php.ini
+sudo cp php.ini.default php.ini
+sudo vim php.ini
+php -m

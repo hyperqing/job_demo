@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b05b3465932ebcfca8b861b1d1f32811",
+    "content-hash": "c129ffe22c18e6a8c1104f10876652b8",
     "packages": [
         {
             "name": "alcaeus/mongo-php-adapter",
@@ -902,6 +902,167 @@
                 "migrations"
             ],
             "time": "2016-12-25T22:54:00+00:00"
+        },
+        {
+            "name": "doctrine/mongodb",
+            "version": "1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/mongodb.git",
+                "reference": "517560a6c806e1c8ab9381fa26ab68d25850881c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/517560a6c806e1c8ab9381fa26ab68d25850881c",
+                "reference": "517560a6c806e1c8ab9381fa26ab68d25850881c",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "^2.2",
+                "ext-mongo": "^1.6.7",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "jmikola/geojson": "^1.0",
+                "phpunit/phpunit": "^5.7 || ^6.0"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Allows usage of PHP 7",
+                "jmikola/geojson": "Support GeoJSON geometry objects in 2dsphere queries"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\MongoDB": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan H. Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                },
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com"
+                },
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com"
+                },
+                {
+                    "name": "Maciej Malarz",
+                    "email": "malarzm@gmail.com"
+                },
+                {
+                    "name": "Andreas Braun",
+                    "email": "alcaeus@alcaeus.org"
+                }
+            ],
+            "description": "Doctrine MongoDB Abstraction Layer",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "mongodb",
+                "persistence"
+            ],
+            "time": "2018-04-30T18:04:09+00:00"
+        },
+        {
+            "name": "doctrine/mongodb-odm",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/mongodb-odm.git",
+                "reference": "da55c86f66d3356b77965a5d571ea646b081a277"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/da55c86f66d3356b77965a5d571ea646b081a277",
+                "reference": "da55c86f66d3356b77965a5d571ea646b081a277",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "~1.2",
+                "doctrine/cache": "~1.0",
+                "doctrine/collections": "~1.1",
+                "doctrine/common": "~2.4",
+                "doctrine/inflector": "~1.0",
+                "doctrine/instantiator": "^1.0.1",
+                "doctrine/mongodb": "^1.6.1",
+                "php": "^5.6 || ^7.0",
+                "symfony/console": "~2.3|~3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.21|^6.4",
+                "symfony/yaml": "~2.3|~3.0|^4.0"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Allows usage of PHP 7",
+                "symfony/yaml": "Enables the YAML metadata mapping driver"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\ODM\\MongoDB": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan H. Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                },
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com"
+                },
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com"
+                },
+                {
+                    "name": "Maciej Malarz",
+                    "email": "malarzm@gmail.com"
+                },
+                {
+                    "name": "Andreas Braun",
+                    "email": "alcaeus@alcaeus.org"
+                }
+            ],
+            "description": "Doctrine MongoDB Object Document Mapper",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "mongodb",
+                "odm",
+                "persistence"
+            ],
+            "time": "2018-05-18T04:25:07+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -5005,7 +5166,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/EasyCorp/easy-log-handler/1a617a37ab9389eac4e2e1d14cb70ee0087d724d.zip",
+                "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/1a617a37ab9389eac4e2e1d14cb70ee0087d724d",
                 "reference": "1a617a37ab9389eac4e2e1d14cb70ee0087d724d",
                 "shasum": ""
             },
@@ -5055,7 +5216,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nikic/PHP-Parser/e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3.zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
                 "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
                 "shasum": ""
             },
@@ -5106,7 +5267,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/browser-kit/840bb6f0d5b3701fd768b68adf7193c2d0f98f79.zip",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/840bb6f0d5b3701fd768b68adf7193c2d0f98f79",
                 "reference": "840bb6f0d5b3701fd768b68adf7193c2d0f98f79",
                 "shasum": ""
             },
@@ -5163,7 +5324,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/css-selector/d2ce52290b648ae33b5301d09bc14ee378612914.zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/d2ce52290b648ae33b5301d09bc14ee378612914",
                 "reference": "d2ce52290b648ae33b5301d09bc14ee378612914",
                 "shasum": ""
             },
@@ -5216,7 +5377,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/debug-bundle/e5de2664081e8c7753e951970af43f0ee01cf645.zip",
+                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/e5de2664081e8c7753e951970af43f0ee01cf645",
                 "reference": "e5de2664081e8c7753e951970af43f0ee01cf645",
                 "shasum": ""
             },
@@ -5281,7 +5442,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/debug-pack/ae4b15596788f9592f67f8615398671bf3f796e4.zip",
+                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/ae4b15596788f9592f67f8615398671bf3f796e4",
                 "reference": "ae4b15596788f9592f67f8615398671bf3f796e4",
                 "shasum": ""
             },
@@ -5311,7 +5472,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/dom-crawler/201b210fafcdd193c1e45b2994bf7133fb6263e8.zip",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/201b210fafcdd193c1e45b2994bf7133fb6263e8",
                 "reference": "201b210fafcdd193c1e45b2994bf7133fb6263e8",
                 "shasum": ""
             },
@@ -5368,7 +5529,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/dotenv/66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992.zip",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992",
                 "reference": "66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992",
                 "shasum": ""
             },
@@ -5425,7 +5586,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/maker-bundle/bb0485a3b2eecc561eff735109316677e18fb1d1.zip",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/bb0485a3b2eecc561eff735109316677e18fb1d1",
                 "reference": "bb0485a3b2eecc561eff735109316677e18fb1d1",
                 "shasum": ""
             },
@@ -5490,7 +5651,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/phpunit-bridge/63cdae00a75862fa543b765ba63d55f6b6397d0c.zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/63cdae00a75862fa543b765ba63d55f6b6397d0c",
                 "reference": "63cdae00a75862fa543b765ba63d55f6b6397d0c",
                 "shasum": ""
             },
@@ -5556,7 +5717,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/profiler-pack/fa2e2dad522a3bef322196abad28ffce6d0fdbc5.zip",
+                "url": "https://api.github.com/repos/symfony/profiler-pack/zipball/fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
                 "reference": "fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
                 "shasum": ""
             },
@@ -5584,7 +5745,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/stopwatch/eb17cfa072cab26537ac37e9c4ece6c0361369af.zip",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/eb17cfa072cab26537ac37e9c4ece6c0361369af",
                 "reference": "eb17cfa072cab26537ac37e9c4ece6c0361369af",
                 "shasum": ""
             },
@@ -5633,7 +5794,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/var-dumper/0e6545672d8c9ce70dd472adc2f8b03155a46f73.zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/0e6545672d8c9ce70dd472adc2f8b03155a46f73",
                 "reference": "0e6545672d8c9ce70dd472adc2f8b03155a46f73",
                 "shasum": ""
             },
@@ -5702,7 +5863,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/web-profiler-bundle/a3e7839c263e05304c6f927713d623f84488bb5a.zip",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/a3e7839c263e05304c6f927713d623f84488bb5a",
                 "reference": "a3e7839c263e05304c6f927713d623f84488bb5a",
                 "shasum": ""
             },
@@ -5769,7 +5930,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/web-server-bundle/d4c15d1dc4672bce74e4c27ffda3c9b5436e736a.zip",
+                "url": "https://api.github.com/repos/symfony/web-server-bundle/zipball/d4c15d1dc4672bce74e4c27ffda3c9b5436e736a",
                 "reference": "d4c15d1dc4672bce74e4c27ffda3c9b5436e736a",
                 "shasum": ""
             },
