@@ -41,7 +41,7 @@
         </div>
         <div class="col-md">
             <div class="form-group">
-                <label for="exampleInputPassword1">性别：</label>
+                <label for="sex">性别：</label>
                 <select name="" id="sex" class="form-control" title="">
                     <option value="-">--</option>
                     <option value="男">男</option>
@@ -65,14 +65,14 @@
     <div class="row">
         <div class="col-md">
             <div class="form-group">
-                <label for="exampleInputEmail1">生日：</label>
-                <input type="date" class="form-control">
+                <label for="birthday">生日：</label>
+                <input type="date" class="form-control" id="birthday">
             </div>
         </div>
         <div class="col-md">
             <div class="form-group">
-                <label for="exampleInputEmail1">联系电话：</label>
-                <input type="text" class="form-control">
+                <label for="phone">联系电话：</label>
+                <input type="text" class="form-control" id="phone">
             </div>
         </div>
         <div class="col-md-6">
@@ -413,6 +413,9 @@
                 data: {
                     name: $("#name").val(),
                     sex: $("#sex").val(),
+                    phone: $("#phone").val(),
+                    birthday: $("#birthday").val(),
+                    education: $("#education").val(),
                 },
                 success: function (res) {
                     console.log(res);

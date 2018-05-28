@@ -27,6 +27,9 @@ class CandidateController extends Controller
             '_id' => new \MongoDB\BSON\ObjectID,
             'name' => $form_data['name'],
             'sex' => $form_data['sex'],
+            'phone' => $form_data['phone'],
+            'birthday' => $form_data['birthday'],
+            'education' => $form_data['education'] ?? null,
         ];
         // 写入数据库
         $bulk = new \MongoDB\Driver\BulkWrite;
