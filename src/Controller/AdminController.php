@@ -26,9 +26,11 @@ class AdminController extends Controller
         ];
         // 查询数据
         $query = new Query($filter);
-        $result = MongoDriver::instance()->executeQuery('demo.job', $query);
-        return $this->render('admin/index.html.twig',[
-            'list' => $result
+        $corsor = MongoDriver::instance()->executeQuery('demo.job', $query);
+        $list = $corsor->toArray();
+        return $this->render('admin/index.html.twig', [
+            'list' => $list,
+            'size' => count($list),
         ]);
     }
 }
