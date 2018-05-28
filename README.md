@@ -66,6 +66,8 @@ composer config "platform.ext-mongodb" "1.2.0" && composer require "alcaeus/mong
 Mac安装pear
 >https://www.jianshu.com/p/598c0fd84719
 
+将go-pear.phar放置于/usr/local进行安装
+
 PHP7 Mongdb 扩展安装
 >http://www.runoob.com/mongodb/php7-mongdb-tutorial.html
 
@@ -75,11 +77,37 @@ sudo pecl install mongodb
 
 brew install homebrew/php/php71-mongodb
 
-直接用git clone 手动编译
-http://php.net/manual/zh/mongodb.installation.manual.php
+## 备用：直接用git clone 手动编译
 
+>http://php.net/manual/zh/mongodb.installation.manual.php
+
+## 启用mongodb模块
+```
 cd /etc
-cp php.ini.default php.ini
 sudo cp php.ini.default php.ini
 sudo vim php.ini
+```
+添加一行
+```
+extension = mongodb.so
+```
+查看是否有mongodb模块
+```
 php -m
+```
+
+
+## Mac OS X 11中的/usr/bin 的“Operation not permitted”
+
+>https://www.jianshu.com/p/22b89f19afd6
+
+重启按住Command+R进入恢复模式，在终端输入。
+
+关闭Rootless
+```
+csrutil disable
+```
+开启Rootless
+```
+csrutil enable
+```
