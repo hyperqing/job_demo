@@ -327,8 +327,8 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="exampleInputPassword1">应聘职能：</label>
-                    <select name="" id="" class="form-control" title="" size="2">
+                    <label for="job_name">应聘职能：</label>
+                    <select name="" id="job_name" class="form-control" title="" size="2">
                         <option value="PHP工程师">PHP工程师</option>
                         <option value="前端工程师">前端工程师</option>
                         <option value="全栈工程师">全栈工程师</option>
@@ -338,8 +338,8 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="exampleInputPassword1">应聘性质：</label>
-                    <select name="" id="" class="form-control" title="">
+                    <label for="job_property">应聘性质：</label>
+                    <select name="" id="job_property" class="form-control" title="">
                         <option value="全职">全职</option>
                         <option value="实习">实习</option>
                     </select>
@@ -406,6 +406,9 @@
     $(function () {
         // 提交表单
         $("#submit-btn").click(function () {
+            if ($("#name").val().length === 0) {
+                return;
+            }
             $.ajax({
                 url: "{{ path("candidate/save") }}",
                 type: "post",
@@ -416,6 +419,8 @@
                     phone: $("#phone").val(),
                     birthday: $("#birthday").val(),
                     education: $("#education").val(),
+                    job_name: $("#job_name").val(),
+                    job_property: $("#job_property").val(),
                 },
                 success: function (res) {
                     console.log(res);
