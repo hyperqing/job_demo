@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     /**
      * 后台首页
-     * @Route("/admin",name="_admin")
+     * @Route("/admin",name="admin")
      */
     public function index()
     {

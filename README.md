@@ -111,3 +111,16 @@ csrutil disable
 ```
 csrutil enable
 ```
+
+https://stackoverflow.com/questions/17049568/symfony2-generatebundle-is-not-defined
+
+## generate:bundle 无法使用解决方法
+
+Command "generate:bundle" is not defined.  
+
+>https://stackoverflow.com/questions/17049568/symfony2-generatebundle-is-not-defined
+
+安装sensio/generator-bundle
+```
+composer require sensio/generator-bundle
+```

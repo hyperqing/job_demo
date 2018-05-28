@@ -19,10 +19,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('_index') }}">首页 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('index') }}">首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('_admin') }}">管理后台</a>
+                <a class="nav-link" href="{{ path('admin') }}">管理后台</a>
             </li>
         </ul>
     </div>
@@ -407,7 +407,7 @@
         // 提交表单
         $("#submit-btn").click(function () {
             $.ajax({
-                url: "{{ path("_candidate_save") }}",
+                url: "{{ path("candidate/save") }}",
                 type: "post",
                 dataType: "json",
                 data: {
@@ -416,6 +416,9 @@
                 },
                 success: function (res) {
                     console.log(res);
+                    if (res.status === 1) {
+                        alert("提交成功！");
+                    }
                 },
                 error: function () {
 
