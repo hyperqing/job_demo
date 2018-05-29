@@ -44,7 +44,7 @@ class CandidateController extends Controller
         // 返回结果
         return $this->json([
             'status' => 1,
-            'info' => '添加成功',
+            'info' => '提交成功',
             'data' => $form_data,
         ]);
     }

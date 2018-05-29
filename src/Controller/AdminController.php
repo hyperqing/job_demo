@@ -29,6 +29,8 @@ class AdminController extends Controller
         $corsor = MongoDriver::instance()->executeQuery('demo.job', $query);
         $list = $corsor->toArray();
         foreach ($list as &$item) {
+            // 精简时间
+            $item->created_at = explode(' ', $item->created_at)[0];
             // 取第一条记录为最高学历
             if (count($item->education) !== 0 && isset($item->education[0])) {
                 $item->education = $item->education[0];
