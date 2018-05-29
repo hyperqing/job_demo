@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>西洋汇招聘管理后台</title>
+    <title>西洋汇招聘</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <style>
-        .container-fluid{
+        .container-fluid {
             max-width: 1400px;
         }
     </style>
@@ -21,54 +21,423 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('index') }}">首页</a>
-            </li>
             <li class="nav-item active">
+                <a class="nav-link" href="{{ path('index') }}">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ path('admin') }}">管理后台</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="card my-3">
-        <div class="card-body">
-
+    <div class="alert alert-secondary my-3" role="alert">
+        <p>你的到场时间：2018-04-22 13:30</p>
+        <p>为了更科学地进行结构化考试，我们全过程采用无纸化面试，请按照以下指引填写完善你的资料。</p>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="name">中文名：</label>
+                <input type="text" class="form-control" id="name" placeholder="必填" value="{{ user.name }}">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="sex">性别：</label>
+                <select name="" id="sex" class="form-control" title="">
+                    <option value="--" {{ user.sex=='--'?'selected':'' }}>--</option>
+                    <option value="男" {{ user.sex=='男'?'selected':'' }}>男</option>
+                    <option value="女" {{ user.sex=='女'?'selected':'' }}>女</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputEmail1">民族：</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputEmail1">籍贯：</label>
+                <input type="text" class="form-control">
+            </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="birthday">出生日期：</label>
+                <input type="date" class="form-control" id="birthday" value="{{ user.birthday }}">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="phone">联系电话：</label>
+                <input type="text" class="form-control" id="phone" value="{{ user.phone }}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">详细地址：</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputEmail1">工作年限：</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="全职工作年限">
+                    <div class="input-group-append">
+                        <span class="input-group-text">年</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputEmail1">婚姻状况：</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hunyin" value="未婚" id="hunyin-1">
+                        <label class="form-check-label" for="hunyin-1">未婚</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hunyin" value="已婚" id="hunyin-2">
+                        <label class="form-check-label" for="hunyin-2">已婚</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hunyin" value="离异" id="hunyin-3">
+                        <label class="form-check-label" for="hunyin-3">离异</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hunyin" value="丧偶" id="hunyin-4">
+                        <label class="form-check-label" for="hunyin-4">丧偶</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputEmail1">生育状况：</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="shengyu" value="未育" id="shengyu-1">
+                        <label class="form-check-label" for="shengyu-1">未育</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="shengyu" value="在孕" id="shengyu-2">
+                        <label class="form-check-label" for="shengyu-2">在孕</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="shengyu" value="已育" id="shengyu-3">
+                        <label class="form-check-label" for="shengyu-3">已育</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="exampleInputPassword1">婚育计划：</label>
+                <select name="" id="" class="form-control" title="">
+                    <option value="暂无">暂无</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="edu">
+        <h3>
+            教育经历
+            <small class="text-muted">从最高起填写，可填至中学</small>
+        </h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>教育时间</th>
+                <th>性质</th>
+                <th>学历</th>
+                <th>学校名称</th>
+                <th>专业</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for edu in user.education %}
+                <tr>
+                    <td>
+                        <div class="form-inline">
+                            <input type="date" name="edu_start_time[]" class="form-control"
+                                   value="{{ edu.start_time }}">
+                            &nbsp;至&nbsp;
+                            <input type="date" name="edu_end_time[]" class="form-control" value="{{ edu.end_time }}">
+                        </div>
+                    </td>
+                    <td>
+                        <select name="edu_property[]" class="form-control">
+                            <option value="--" {{ edu.property=='--'?'selected':'' }}>--</option>
+                            <option value="全日制统招" {{ edu.property=='全日制统招'?'selected':'' }}>全日制统招</option>
+                            <option value="函授" {{ edu.property=='函授'?'selected':'' }}>函授</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="edu_level[]" class="form-control">
+                            <option value="-">--</option>
+                            <option value="本科">本科</option>
+                            <option value="高中">高中</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="edu_school_name[]" class="form-control" value="{{ edu.school_name }}">
+                    </td>
+                    <td>
+                        <input type="text" name="edu_major[]" class="form-control" value="{{ edu.major }}">
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="job">
+        <h3>
+            工作/实习经历
+            <small class="text-muted">从最近起填写</small>
+        </h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>工作时间</td>
+                <td>性质</td>
+                <td>单位名称</td>
+                <td>部门职位</td>
+                <td>状态</td>
+                <td>薪资范围</td>
+                <td>证明人及电话</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="form-inline">
+                        <input type="date" name="job_start_time[]" class="form-control">
+                        &nbsp;至&nbsp;
+                        <input type="date" name="job_end_time[]" class="form-control">
+                    </div>
+                </td>
+                <td>
+                    <select name="" id="" class="form-control">
+                        <option value="-">-</option>
+                        <option value="全职">全职</option>
+                        <option value="实习">实习</option>
+                        <option value="兼职">兼职</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control">
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control">
+                </td>
+                <td>
+                    <select name="" id="" class="form-control">
+                        <option value="-">-</option>
+                        <option value="离职">离职</option>
+                        <option value="在职">在职</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control" placeholder="选填">
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control" placeholder="必填">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="family">
+        <h3>家庭背景</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>关系</th>
+                <th>姓名</th>
+                <th>单位及职业</th>
+                <th>联系电话</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="" id="" class="form-control" placeholder="父母/丈夫/妻子">
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control">
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control" placeholder="必填">
+                </td>
+                <td>
+                    <input type="text" name="" id="" class="form-control" placeholder="必填">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="status">
+        <h3>应聘情况</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="job_name">应聘职能：</label>
+                    <select name="" id="job_name" class="form-control" title="" size="2">
+                        <option value="PHP工程师" {{ user.job_name=='PHP工程师'?'selected':'' }}>PHP工程师</option>
+                        <option value="前端工程师" {{ user.job_name=='前端工程师'?'selected':'' }}>前端工程师</option>
+                        <option value="全栈工程师" {{ user.job_name=='全栈工程师'?'selected':'' }}>全栈工程师</option>
+                        <option value="大数据分析" {{ user.job_name=='大数据分析'?'selected':'' }}>大数据分析</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="job_property">应聘性质：</label>
+                    <select name="" id="job_property" class="form-control" title="">
+                        <option value="全职" {{ user.job_property=='全职'?'selected':'' }}>全职</option>
+                        <option value="实习" {{ user.job_property=='实习'?'selected':'' }}>实习</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">自我定位：</label>
+                    <select name="" id="" class="form-control" title="">
+                        <option value="实习生">实习生</option>
+                        <option value="初级工程师">初级工程师</option>
+                        <option value="中级工程师">中级工程师</option>
+                        <option value="高级工程师">高级工程师</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">薪资要求：</label>
+                    <input type="text" name="" id="" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">到岗时间：</label>
+                    <select name="" id="" class="form-control" title="">
+                        <option value="随时">随时</option>
+                        <option value="一至三个月">一至三个月</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="declare">
+        <div class="card">
+            <div class="card-header">
+                <h3>候选人声明</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">
+                        本人提供的一切个人信息/教育背景/工作经历/家庭背景等全部属实。
+                    </label>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="submitting my-3 text-center">
+        <button type="button" class="btn btn-primary" id="submit-btn">保存更改</button>
+    </div>
+    <footer class="text-center">
+        <p>Copyright@2018</p>
+    </footer>
 </div>
 </body>
+<script src=""></script>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(function () {
-        $(".delete-btn-js").click(function () {
-            console.log($(this).data("id"));
+        // 提交表单
+        $("#submit-btn").click(function () {
+            if ($("#name").val().length === 0) {
+                return;
+            }
+            // 获取教育背景信息
+            // 开始时间
+            let edu_start_time = $("[name='edu_start_time[]']").map(function () {
+                return this.value;
+            }).get();
+            // 结束时间
+            let edu_end_time = $("[name='edu_end_time[]']").map(function () {
+                return this.value;
+            }).get();
+            // 性质
+            let edu_property = $("[name='edu_property[]']").map(function () {
+                return this.value;
+            }).get();
+            // 学历
+            let edu_level = $("[name='edu_level[]']").map(function () {
+                return this.value;
+            }).get();
+            // 学校名称
+            let edu_school_name = $("[name='edu_school_name[]']").map(function () {
+                return this.value;
+            }).get();
+            // 专业
+            let edu_major = $("[name='edu_major[]']").map(function () {
+                return this.value;
+            }).get();
+            // 整理记录
+            let education = [];
+            for (let i = 0; i < edu_start_time.length; i++) {
+                education.push({
+                    start_time: edu_start_time[i],
+                    end_time: edu_end_time[i],
+                    property: edu_property[i],
+                    level: edu_level[i],
+                    school_name: edu_school_name[i],
+                    major: edu_major[i],
+                })
+            }
             $.ajax({
-                url: "",
+                url: "{{ path("candidate/update") }}",
                 type: "post",
                 dataType: "json",
                 data: {
-                    id: $(this).data("id"),
+                    _id: "{{ user._id }}",
+                    name: $("#name").val(),
+                    sex: $("#sex").val(),
+                    phone: $("#phone").val(),
+                    birthday: $("#birthday").val(),
+                    education: education,
+                    job_name: $("#job_name").val(),
+                    job_property: $("#job_property").val(),
                 },
                 success: function (res) {
                     console.log(res);
                     if (res.status === 1) {
                         toastr.success(res.info);
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 1000);
                     }
                 },
                 error: function () {
 
                 }
             });
-        })
+        });
     })
 </script>
 </html>
