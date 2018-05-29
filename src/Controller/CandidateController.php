@@ -31,7 +31,7 @@ class CandidateController extends Controller
             'sex' => $form_data['sex'],
             'phone' => $form_data['phone'],
             'birthday' => $form_data['birthday'],
-            'education' => $form_data['education'] ?? null, // TODO
+            'education' => $form_data['education'],
             'job_name' => $form_data['job_name'],
             'job_property' => $form_data['job_property'],
             'status' => '待面试',
@@ -91,8 +91,45 @@ class CandidateController extends Controller
     /**
      * 候选人信息保存更改
      * @Route("/candidate/update", name="candidate/update")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function update(){
+    public function update(Request $request)
+    {
+        $form_data = $request->request->all();
+        $collection = (new \MongoDB\Client)->demo->job;
+        $updateResult = $collection->updateOne(
+            [
+                '_id' => new ObjectId($request->request->get('_id'))
+            ],
+            [
+                '$set' => [
+                    'name' => $form_data['name'],
+                    'sex' => $form_data['sex'],
+                    'phone' => $form_data['phone'],
+                    'birthday' => $form_data['birthday'],
+                    'education' => $form_data['education'],
+                    'job_name' => $form_data['job_name'],
+                    'job_property' => $form_data['job_property'],
+                    'status' => '待面试',
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]
+            ]
+        );
+        if ($updateResult->getModifiedCount() === 0) {
+            // 返回结果
+            return $this->json([
+                'status' => 0,
+                'info' => '保存失败',
+                'data' => $form_data,
+            ]);
+        }
+        // 返回结果
+        return $this->json([
+            'status' => 1,
+            'info' => '保存成功',
+            'data' => $form_data,
+        ]);
 
 
     }

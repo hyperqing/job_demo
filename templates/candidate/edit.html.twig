@@ -431,6 +431,8 @@
                     console.log(res);
                     if (res.status === 1) {
                         toastr.success(res.info);
+                    }else{
+                        toastr.danger(res.info);
                     }
                 },
                 error: function () {
