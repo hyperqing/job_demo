@@ -163,77 +163,80 @@
             <tbody>
             <tr>
                 <td>
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_start_time[]" class="form-control">
                     -
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_end_time[]" class="form-control">
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_property[]" class="form-control">
                         <option value="-">-</option>
                         <option value="全日制统招">全日制统招</option>
+                        <option value="函授">函授</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_level[]" class="form-control">
                         <option value="-">-</option>
                         <option value="本科">本科</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_school_name[]" class="form-control">
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_major[]" class="form-control">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_start_time[]" class="form-control">
                     -
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_end_time[]" class="form-control">
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_property[]" class="form-control">
                         <option value="-">-</option>
                         <option value="全日制统招">全日制统招</option>
+                        <option value="函授">函授</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_level[]" class="form-control">
                         <option value="-">-</option>
                         <option value="本科">本科</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_school_name[]" class="form-control">
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_major[]" class="form-control">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_start_time[]" class="form-control">
                     -
-                    <input type="date" name="" id="" class="form-control">
+                    <input type="date" name="edu_end_time[]" class="form-control">
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_property[]" class="form-control">
                         <option value="-">-</option>
                         <option value="全日制统招">全日制统招</option>
+                        <option value="函授">函授</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="" class="form-control">
+                    <select name="edu_level[]" class="form-control">
                         <option value="-">-</option>
                         <option value="本科">本科</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_school_name[]" class="form-control">
                 </td>
                 <td>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="edu_major[]" class="form-control">
                 </td>
             </tr>
             </tbody>
@@ -409,6 +412,46 @@
             if ($("#name").val().length === 0) {
                 return;
             }
+            // 获取教育背景信息
+            // 开始时间
+            let edu_start_time = $("[name='edu_start_time[]']").map(function () {
+                return this.value;
+            }).get();
+            console.log(edu_start_time);
+            // 结束时间
+            let edu_end_time = $("[name='edu_end_time[]']").map(function () {
+                return this.value;
+            }).get();
+            console.log(edu_end_time);
+            // 性质
+            let edu_property = $("[name='edu_property[]']").map(function () {
+                return this.value;
+            }).get();
+            // 学历
+            let edu_level = $("[name='edu_level[]']").map(function () {
+                return this.value;
+            }).get();
+            // 学校名称
+            let edu_school_name = $("[name='edu_school_name[]']").map(function () {
+                return this.value;
+            }).get();
+            // 专业
+            let edu_major = $("[name='edu_major[]']").map(function () {
+                return this.value;
+            }).get();
+            // 整理记录
+            let education = [];
+            for (let i = 0; i < edu_start_time.length; i++) {
+                education.push({
+                    edu_start_time: edu_start_time[i],
+                    edu_end_time: edu_end_time[i],
+                    edu_property: edu_property[i],
+                    edu_level: edu_level[i],
+                    edu_school_name: edu_school_name[i],
+                    edu_major: edu_major[i],
+                })
+            }
+            console.log(education);
             $.ajax({
                 url: "{{ path("candidate/save") }}",
                 type: "post",
@@ -418,7 +461,7 @@
                     sex: $("#sex").val(),
                     phone: $("#phone").val(),
                     birthday: $("#birthday").val(),
-                    education: $("#education").val(),
+                    education: education,
                     job_name: $("#job_name").val(),
                     job_property: $("#job_property").val(),
                 },

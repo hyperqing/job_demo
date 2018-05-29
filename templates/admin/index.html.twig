@@ -88,20 +88,18 @@
                     <th>毕业学校</th>
                     <th>状态</th>
                     <th>投递/面试时间</th>
-                    <th>来源</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for item in list %}
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{ item.job_name }}</td>
+                        <td>{{ item.job_property }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.sex }}</td>
                         <td>{{ item.phone }}</td>
                         <td>{{ item.birthday }}</td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
