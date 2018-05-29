@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use MongoDB\BSON\ObjectId;
+use MongoDB\Driver\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,6 +66,36 @@ class CandidateController extends Controller
         return $this->json([
             'status' => 1,
             'info' => '删除成功',
+        ]);
+    }
+
+    /**
+     * 编辑候选人
+     * @Route("/candidate/edit", name="candidate/edit")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    public function edit(Request $request)
+    {
+        $collection = (new \MongoDB\Client)->demo->job;
+
+        $document = $collection->findOne(['_id' => new ObjectId($request->query->get('_id'))]);
+
+        var_dump($document);
+
+
+        $filter = ['_id' => new ObjectId($request->query->get('_id'))];
+        $options = [
+            'projection' => ['_id' => 0],
+            'sort' => ['x' => -1],
+        ];
+        // 查询数据
+        $query = new Query($filter);
+        $corsor = MongoDriver::instance()->executeQuery('demo.job', $query);
+        $user = $corsor->toArray();
+        return $this->render('candidate/edit.html.twig', [
+            'user' =>[]
         ]);
     }
 }

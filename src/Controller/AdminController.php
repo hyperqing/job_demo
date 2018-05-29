@@ -35,6 +35,10 @@ class AdminController extends Controller
             if (count($item->education) !== 0 && isset($item->education[0])) {
                 $item->education = $item->education[0];
             }
+            // 生成修改页面链接
+            $item->edit_url = $this->generateUrl('candidate/edit', [
+                '_id' => (string)$item->_id
+            ]);
         }
         return $this->render('admin/index.html.twig', [
             'list' => $list,
