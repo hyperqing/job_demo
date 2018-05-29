@@ -36,7 +36,7 @@
         <div class="col-md">
             <div class="form-group">
                 <label for="name">中文名：</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" placeholder="必填">
             </div>
         </div>
         <div class="col-md">
@@ -65,7 +65,7 @@
     <div class="row">
         <div class="col-md">
             <div class="form-group">
-                <label for="birthday">生日：</label>
+                <label for="birthday">出生日期：</label>
                 <input type="date" class="form-control" id="birthday">
             </div>
         </div>
@@ -178,6 +178,7 @@
                     <select name="edu_level[]" class="form-control">
                         <option value="-">-</option>
                         <option value="本科">本科</option>
+                        <option value="高中">高中</option>
                     </select>
                 </td>
                 <td>
@@ -417,12 +418,10 @@
             let edu_start_time = $("[name='edu_start_time[]']").map(function () {
                 return this.value;
             }).get();
-            console.log(edu_start_time);
             // 结束时间
             let edu_end_time = $("[name='edu_end_time[]']").map(function () {
                 return this.value;
             }).get();
-            console.log(edu_end_time);
             // 性质
             let edu_property = $("[name='edu_property[]']").map(function () {
                 return this.value;
@@ -443,15 +442,14 @@
             let education = [];
             for (let i = 0; i < edu_start_time.length; i++) {
                 education.push({
-                    edu_start_time: edu_start_time[i],
-                    edu_end_time: edu_end_time[i],
-                    edu_property: edu_property[i],
-                    edu_level: edu_level[i],
-                    edu_school_name: edu_school_name[i],
-                    edu_major: edu_major[i],
+                    start_time: edu_start_time[i],
+                    end_time: edu_end_time[i],
+                    property: edu_property[i],
+                    level: edu_level[i],
+                    school_name: edu_school_name[i],
+                    major: edu_major[i],
                 })
             }
-            console.log(education);
             $.ajax({
                 url: "{{ path("candidate/save") }}",
                 type: "post",

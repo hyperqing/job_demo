@@ -33,6 +33,9 @@ class CandidateController extends Controller
             'education' => $form_data['education'] ?? null, // TODO
             'job_name' => $form_data['job_name'],
             'job_property' => $form_data['job_property'],
+            'status' => '待面试',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
         // 写入数据库
         $bulk = new \MongoDB\Driver\BulkWrite;
