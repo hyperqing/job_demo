@@ -49,7 +49,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label">应聘职位：</label>
                             <div class="col-sm-8">
-                                <select name="job" class="form-control" title="">
+                                <select name="job_name" class="form-control" title="">
                                     <option value="--">--</option>
                                     <option value="PHP工程师">PHP工程师</option>
                                     <option value="前端工程师">前端工程师</option>
@@ -137,6 +137,8 @@
 <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(function () {
+        $("option[value='{{ keyword.job_name }}']").attr('selected', 'selected');
+        $("option[value='{{ keyword.sort }}']").attr('selected', 'selected');
         $(".delete-btn-js").click(function () {
             console.log($(this).data("id"));
             $.ajax({

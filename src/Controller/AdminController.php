@@ -32,8 +32,20 @@ class AdminController extends Controller
         if (!empty($name)) {
             $filter['name'] = new Regex($name);
         }
-        //
-
+        // 应聘职位条件
+        $job_name = $request->query->get('job_name');
+        if (!empty($job_name) && $job_name !== '--') {
+            $filter['job_name'] = new Regex($job_name);
+        }
+        // 排序方式
+        $sort = $request->query->get('sort');
+        if ($sort === '升序') {
+            $options['sort'] = ['name' => 1];
+        }
+        if ($sort === '降序') {
+            $options['sort'] = ['name' => -1];
+        }
+        // 执行查询
         $collection = (new \MongoDB\Client)->demo->job;
         $cursor = $collection->find($filter, $options);
         $list = $cursor->toArray();
@@ -49,10 +61,11 @@ class AdminController extends Controller
                 '_id' => (string)$item->_id
             ]);
         }
-
         return $this->render('admin/index.html.twig', [
             'keyword' => [
                 'name' => $name,
+                'job_name' => $job_name,
+                'sort' => $sort,
             ],
             'list' => $list,
             'size' => count($list),
