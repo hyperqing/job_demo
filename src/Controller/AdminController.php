@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use MongoDB\Driver\Query;
+use MongoDB\BSON\Regex;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,19 +16,27 @@ class AdminController extends Controller
     /**
      * 后台首页
      * @Route("/admin",name="admin")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \MongoDB\Driver\Exception\Exception
      */
-    public function index()
+    public function index(Request $request)
     {
+        // 初始化查询条件
         $filter = [];
         $options = [
-            'projection' => ['_id' => 0],
-            'sort' => ['x' => -1],
+            'sort' => ['name' => -1],
         ];
-        // 查询数据
-        $query = new Query($filter);
-        $corsor = MongoDriver::instance()->executeQuery('demo.job', $query);
-        $list = $corsor->toArray();
+        // 按姓名模糊查询
+        $name = $request->query->get('name');
+        if (!empty($name)) {
+            $filter['name'] = new Regex($name);
+        }
+        //
+
+        $collection = (new \MongoDB\Client)->demo->job;
+        $cursor = $collection->find($filter, $options);
+        $list = $cursor->toArray();
         foreach ($list as &$item) {
             // 精简时间
             $item->created_at = explode(' ', $item->created_at)[0];
@@ -40,7 +49,11 @@ class AdminController extends Controller
                 '_id' => (string)$item->_id
             ]);
         }
+
         return $this->render('admin/index.html.twig', [
+            'keyword' => [
+                'name' => $name,
+            ],
             'list' => $list,
             'size' => count($list),
         ]);

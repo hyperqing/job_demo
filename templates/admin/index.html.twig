@@ -35,44 +35,47 @@
 <div class="container-fluid">
     <div class="card my-3">
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label">姓名：</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name">
+            <form action="{{ path('admin') }}" method="get">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label">姓名：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" value="{{ keyword.name }}">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label">应聘职位：</label>
-                        <div class="col-sm-8">
-                            <select name="" id="" class="form-control" title="">
-                                <option value="PHP工程师">PHP工程师</option>
-                                <option value="前端工程师">前端工程师</option>
-                                <option value="全栈工程师">全栈工程师</option>
-                                <option value="大数据分析">大数据分析</option>
-                            </select>
+                    <div class="col-md-5">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label">应聘职位：</label>
+                            <div class="col-sm-8">
+                                <select name="job" class="form-control" title="">
+                                    <option value="--">--</option>
+                                    <option value="PHP工程师">PHP工程师</option>
+                                    <option value="前端工程师">前端工程师</option>
+                                    <option value="全栈工程师">全栈工程师</option>
+                                    <option value="大数据分析">大数据分析</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label">排序：</label>
-                        <div class="col-sm-8">
-                            <select name="" id="" class="form-control" title="">
-                                <option value="默认">默认</option>
-                                <option value="升序">升序</option>
-                                <option value="降序">降序</option>
-                            </select>
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label">姓名排序：</label>
+                            <div class="col-sm-8">
+                                <select name="sort" class="form-control" title="">
+                                    <option value="默认">默认</option>
+                                    <option value="升序">升序</option>
+                                    <option value="降序">降序</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary">搜索</button>
+                    </div>
                 </div>
-                <div class="col-md-1">
-                    <button class="btn btn-primary">搜索</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="card my-3">
