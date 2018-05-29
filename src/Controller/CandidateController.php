@@ -67,11 +67,25 @@ class CandidateController extends LoginCheckController
                 '$set' => [
                     'name' => $form_data['name'],
                     'sex' => $form_data['sex'],
-                    'phone' => $form_data['phone'],
+                    'nation' => $form_data['nation'],
+                    'birth_place' => $form_data['birth_place'],
+
                     'birthday' => $form_data['birthday'],
+                    'phone' => $form_data['phone'],
+                    'address' => $form_data['address'],
+
+                    'working_life' => $form_data['working_life'],
+                    'hunyin' => $form_data['hunyin'],
+                    'shengyu' => $form_data['shengyu'],
+
                     'education' => $form_data['education'],
+                    'work' => $form_data['work'],
+
                     'job_name' => $form_data['job_name'],
                     'job_property' => $form_data['job_property'],
+                    'my_level' => $form_data['my_level'],
+                    'salary_require' => $form_data['salary_require'],
+                    'come_time' => $form_data['come_time'],
                     'status' => '待面试',
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]

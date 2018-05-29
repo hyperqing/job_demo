@@ -34,10 +34,6 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="alert alert-secondary my-3" role="alert">
-        <p>你的到场时间：2018-04-22 13:30</p>
-        <p>为了更科学地进行结构化考试，我们全过程采用无纸化面试，请按照以下指引填写完善你的资料。</p>
-    </div>
     <form id="candidate-form">
         <div class="row">
             <div class="col-md">
@@ -57,15 +53,17 @@
                 </div>
             </div>
             <div class="col-md">
-                <div class="form-group">
+                <div class="form-nation">
                     <label for="exampleInputEmail1">民族：</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="nation" placeholder="必填" value="{{ user.nation }}"
+                           required>
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">籍贯：</label>
-                    <input type="text" class="form-control">
+                    <label for="birth_place">籍贯：</label>
+                    <input type="text" class="form-control" id="birth_place" placeholder="必填"
+                           value="{{ user.birth_place }}" required>
                 </div>
             </div>
         </div>
@@ -73,28 +71,32 @@
             <div class="col-md">
                 <div class="form-group">
                     <label for="birthday">出生日期：</label>
-                    <input type="date" class="form-control" id="birthday" value="{{ user.birthday }}">
+                    <input type="date" class="form-control" id="birthday" placeholder="必填" required
+                           value="{{ user.birthday }}">
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-group">
                     <label for="phone">联系电话：</label>
-                    <input type="text" class="form-control" id="phone" value="{{ user.phone }}">
+                    <input type="text" class="form-control" id="phone" placeholder="必填" required
+                           value="{{ user.phone }}">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">详细地址：</label>
-                    <input type="text" class="form-control">
+                    <label for="address">详细地址：</label>
+                    <input type="text" class="form-control" id="address" placeholder="必填" value="{{ user.address }}"
+                           required>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">工作年限：</label>
+                    <label for="working_life">工作年限：</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="全职工作年限">
+                        <input type="text" class="form-control" id="working_life" placeholder="全职工作年限"
+                               value="{{ user.working_life }}" required>
                         <div class="input-group-append">
                             <span class="input-group-text">年</span>
                         </div>
@@ -103,22 +105,26 @@
             </div>
             <div class="col-md">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">婚姻状况：</label>
+                    <label for="hunyin">婚姻状况：</label>
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hunyin" value="未婚" id="hunyin-1">
+                            <input class="form-check-input" type="radio" name="hunyin" value="未婚"
+                                   id="hunyin-1" {{ user.hunyin=='未婚'?'checked':'' }}>
                             <label class="form-check-label" for="hunyin-1">未婚</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hunyin" value="已婚" id="hunyin-2">
+                            <input class="form-check-input" type="radio" name="hunyin" value="已婚"
+                                   id="hunyin-2" {{ user.hunyin=='已婚'?'checked':'' }}>
                             <label class="form-check-label" for="hunyin-2">已婚</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hunyin" value="离异" id="hunyin-3">
+                            <input class="form-check-input" type="radio" name="hunyin" value="离异"
+                                   id="hunyin-3" {{ user.hunyin=='离异'?'checked':'' }}>
                             <label class="form-check-label" for="hunyin-3">离异</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hunyin" value="丧偶" id="hunyin-4">
+                            <input class="form-check-input" type="radio" name="hunyin" value="丧偶"
+                                   id="hunyin-4" {{ user.hunyin=='丧偶'?'checked':'' }}>
                             <label class="form-check-label" for="hunyin-4">丧偶</label>
                         </div>
                     </div>
@@ -126,29 +132,24 @@
             </div>
             <div class="col-md">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">生育状况：</label>
+                    <label for="shengyu">生育状况：</label>
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="shengyu" value="未育" id="shengyu-1">
+                            <input class="form-check-input" type="radio" name="shengyu" value="未育"
+                                   id="shengyu-1" {{ user.shengyu=='未育'?'checked':'' }}>
                             <label class="form-check-label" for="shengyu-1">未育</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="shengyu" value="在孕" id="shengyu-2">
+                            <input class="form-check-input" type="radio" name="shengyu" value="在孕"
+                                   id="shengyu-2" {{ user.shengyu=='在孕'?'checked':'' }}>
                             <label class="form-check-label" for="shengyu-2">在孕</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="shengyu" value="已育" id="shengyu-3">
+                            <input class="form-check-input" type="radio" name="shengyu" value="已育"
+                                   id="shengyu-3" {{ user.shengyu=='已育'?'checked':'' }}>
                             <label class="form-check-label" for="shengyu-3">已育</label>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="exampleInputPassword1">婚育计划：</label>
-                    <select name="" id="" class="form-control" title="">
-                        <option value="暂无">暂无</option>
-                    </select>
                 </div>
             </div>
         </div>
@@ -217,48 +218,47 @@
                     <td>性质</td>
                     <td>单位名称</td>
                     <td>部门职位</td>
-                    <td>状态</td>
                     <td>薪资范围</td>
                     <td>证明人及电话</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <div class="form-inline">
-                            <input type="date" name="job_start_time[]" class="form-control">
-                            &nbsp;至&nbsp;
-                            <input type="date" name="job_end_time[]" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <select name="" id="" class="form-control">
-                            <option value="-">-</option>
-                            <option value="全职">全职</option>
-                            <option value="实习">实习</option>
-                            <option value="兼职">兼职</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control">
-                    </td>
-                    <td>
-                        <select name="" id="" class="form-control">
-                            <option value="-">-</option>
-                            <option value="离职">离职</option>
-                            <option value="在职">在职</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control" placeholder="选填">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control" placeholder="必填">
-                    </td>
-                </tr>
+                {% for item in user.work %}
+                    <tr>
+                        <td>
+                            <div class="form-inline">
+                                <input type="date" name="job_start_time[]" class="form-control"
+                                       value="{{ item.start_time }}">
+                                至
+                                <input type="date" name="job_end_time[]" class="form-control"
+                                       value="{{ item.end_time }}">
+                            </div>
+                        </td>
+                        <td>
+                            <select name="job_category[]" class="form-control">
+                                <option value="--" {{ item.category=='--'?'selected':'' }}>--</option>
+                                <option value="全职" {{ item.category=='全职'?'selected':'' }}>全职</option>
+                                <option value="实习" {{ item.category=='实习'?'selected':'' }}>实习</option>
+                                <option value="兼职" {{ item.category=='兼职'?'selected':'' }}>兼职</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="job_company[]" id="" class="form-control"
+                                   value="{{ item.company }}">
+                        </td>
+                        <td>
+                            <input type="text" name="job_content[]" id="" class="form-control"
+                                   value="{{ item.content }}">
+                        </td>
+                        <td>
+                            <input type="text" name="job_salary[]" id="" class="form-control" value="{{ item.salary }}">
+                        </td>
+                        <td>
+                            <input type="text" name="job_reterence[]" id="" class="form-control"
+                                   value="{{ item.reterence }}">
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -316,34 +316,35 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">自我定位：</label>
-                        <select name="" id="" class="form-control" title="">
-                            <option value="实习生">实习生</option>
-                            <option value="初级工程师">初级工程师</option>
-                            <option value="中级工程师">中级工程师</option>
-                            <option value="高级工程师">高级工程师</option>
+                        <label for="my_level">自我定位：</label>
+                        <select name="" id="my_level" class="form-control" title="">
+                            <option value="实习生" {{ user.my_level=='实习生'?'selected':'' }}>实习生</option>
+                            <option value="初级工程师" {{ user.my_level=='初级工程师'?'selected':'' }}>初级工程师</option>
+                            <option value="中级工程师" {{ user.my_level=='中级工程师'?'selected':'' }}>中级工程师</option>
+                            <option value="高级工程师" {{ user.my_level=='高级工程师'?'selected':'' }}>高级工程师</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">薪资要求：</label>
-                        <input type="text" name="" id="" class="form-control">
+                        <label for="salary_require">薪资要求：</label>
+                        <input type="text" name="" id="salary_require" class="form-control"
+                               value="{{ user.salary_require }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">到岗时间：</label>
-                        <select name="" id="" class="form-control" title="">
-                            <option value="随时">随时</option>
-                            <option value="一至三个月">一至三个月</option>
+                        <label for="come_time">到岗时间：</label>
+                        <select name="" id="come_time" class="form-control" title="">
+                            <option value="随时" {{ user.come_time=='随时'?'selected':'' }}>随时</option>
+                            <option value="一至三个月" {{ user.come_time=='一至三个月'?'selected':'' }}>一至三个月</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
         <div class="submitting my-3 text-center">
-            <button type="button" class="btn btn-primary" id="submit-btn">保存更改</button>
+            <button type="submit" class="btn btn-primary" id="submit-btn">保存更改</button>
         </div>
     </form>
     <footer class="text-center">
