@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use MongoDB\BSON\ObjectId;
-use MongoDB\Driver\Query;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * 候选人控制器
  * @package App\Controller
  */
-class CandidateController extends Controller
+class CandidateController extends LoginCheckController
 {
     /**
      * 添加新候选人

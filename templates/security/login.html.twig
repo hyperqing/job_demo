@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录 - 西洋汇招聘管理后台</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <style>
         .login {
             width: 250px;
@@ -20,19 +21,16 @@
         <div class="title text-center">
             <h4>欢迎登录</h4>
         </div>
-        <form action="{{ path('login') }}" method="post">
+        <form action="" id="login-form">
             <div class="form-group">
                 <label for="username">账号</label>
-                <input type="text" class="form-control" name="_username" id="username" value="{{ last_username }}"
+                <input type="text" class="form-control" name="user_name" id="user_name"
                        placeholder="Your Name">
             </div>
             <div class="form-group">
                 <label for="pwd">密码</label>
-                <input type="password" class="form-control" name="_password" id="pwd" placeholder="Your Password">
+                <input type="password" class="form-control" name="user_pwd" id="user_pwd" placeholder="Your Password">
             </div>
-            {% if error %}
-                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
             <button type="submit" class="btn btn-block btn-primary" id="login-btn">登 录</button>
         </form>
     </div>
@@ -44,20 +42,26 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(function () {
-        $("#login-btn").click(function () {
-            return;
+        $("#login-form").submit(function (event) {
+            event.preventDefault();
             $.ajax({
                 url: "{{ path('login') }}",
                 type: "post",
                 dataType: "json",
                 data: {
-                    username: $("#username").val(),
-                    pwd: $("#pwd").val(),
+                    user_name: $("#user_name").val(),
+                    user_pwd: $("#user_pwd").val(),
                 },
                 success: function (res) {
                     console.log(res);
+                    if (res.status === 1) {
+                        window.location.href = "{{ path('admin') }}"
+                    } else {
+                        toastr.error(res.info);
+                    }
                 },
                 error: function () {
 

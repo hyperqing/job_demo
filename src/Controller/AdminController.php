@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use MongoDB\BSON\Regex;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * 后台控制器
  * @package App\Controller
  */
-class AdminController extends Controller
+class AdminController extends LoginCheckController
 {
     /**
      * 后台首页

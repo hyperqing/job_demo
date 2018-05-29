@@ -2,21 +2,31 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * 登录检查控制器
- * @package App\Controller
- */
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
+
 class LoginCheckController extends Controller
 {
-    public function __construct()
+    /**
+     * 登录检查
+     * @param SessionInterface $session
+     * @param RouterInterface $router
+     */
+    public function __construct(SessionInterface $session, RouterInterface $router)
     {
-        $request = Request::createFromGlobals();
-        if (!$request->getSession()->get('user')) {
-            return $this->redirectToRoute('login');
+        if (!$session->has('user_name')) {
+            $response = new RedirectResponse(
+                $router->generate(
+                    'login',
+                    [],
+                    UrlGeneratorInterface::ABSOLUTE_URL
+                )
+            );
+            $response->send();
         }
     }
 }
