@@ -133,4 +133,8 @@ composer require sensio/generator-bundle
 
 https://docs.mongodb.com/php-library/current/tutorial/crud/
 
+## MongoDB 多种操作方法
 
+- 通过Pecl编译安装MongoDB。 【MongoDB/Driver/Manager】 （http://www.runoob.com/mongodb/php7-mongdb-tutorial.html）
+- composer require mongodb/mongodb 。 【MongoDB/Client】（https://docs.mongodb.com/php-library/current/tutorial/crud/）
+- Doctrine MongoDB Bundle。 【ORM操作】 （https://www.doctrine-project.org/projects/doctrine-mongodb-odm/en/latest/reference/introduction.html）
