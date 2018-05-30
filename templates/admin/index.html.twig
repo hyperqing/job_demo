@@ -44,16 +44,16 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">姓名：</label>
-                            <div class="col-sm-8">
+                            <label for="name" class="col-sm-3 col-form-label">姓名：</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" name="name" value="{{ keyword.name }}">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">应聘职位：</label>
-                            <div class="col-sm-8">
+                            <label for="name" class="col-sm-3 col-form-label">职位：</label>
+                            <div class="col-sm-9">
                                 <select name="job_name" class="form-control" title="">
                                     <option value="--">--</option>
                                     <option value="PHP工程师">PHP工程师</option>
@@ -66,8 +66,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">姓名排序：</label>
-                            <div class="col-sm-8">
+                            <label for="name" class="col-sm-3 col-form-label">排序：</label>
+                            <div class="col-sm-9">
                                 <select name="sort" class="form-control" title="">
                                     <option value="默认">默认</option>
                                     <option value="升序">升序</option>
@@ -76,8 +76,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-3">
                         <button class="btn btn-primary">搜索</button>
+                        <a class="btn" href="{{ path('admin') }}">清除条件</a>
                     </div>
                 </div>
             </form>

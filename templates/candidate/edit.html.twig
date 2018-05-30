@@ -189,9 +189,9 @@
                         </td>
                         <td>
                             <select name="edu_level[]" class="form-control">
-                                <option value="-">--</option>
-                                <option value="本科">本科</option>
-                                <option value="高中">高中</option>
+                                <option value="--" {{ edu.level=='--'?'selected':'' }}>--</option>
+                                <option value="本科" {{ edu.level=='本科'?'selected':'' }}>本科</option>
+                                <option value="高中" {{ edu.level=='高中'?'selected':'' }}>高中</option>
                             </select>
                         </td>
                         <td>
@@ -274,20 +274,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <input type="text" name="" id="" class="form-control" placeholder="父母/丈夫/妻子">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control" placeholder="必填">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="" class="form-control" placeholder="必填">
-                    </td>
-                </tr>
+                {% for item in user.family %}
+                    <tr>
+                        <td>
+                            <input type="text" name="family_relate[]" id="" class="form-control"
+                                   value="{{ item.relate }}" placeholder="父母/丈夫/妻子">
+                        </td>
+                        <td>
+                            <input type="text" name="family_name[]" id="" class="form-control" value="{{ item.name }}">
+                        </td>
+                        <td>
+                            <input type="text" name="family_company[]" id="" class="form-control"
+                                   value="{{ item.company }}">
+                        </td>
+                        <td>
+                            <input type="text" name="family_phone[]" id="" class="form-control"
+                                   value="{{ item.phone }}">
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -412,6 +417,19 @@
             let job_reterence = $("[name='job_reterence[]']").map(function () {
                 return this.value;
             }).get();
+            // 获取家庭信息
+            let family_relate = $("[name='family_relate[]']").map(function () {
+                return this.value;
+            }).get();
+            let family_name = $("[name='family_name[]']").map(function () {
+                return this.value;
+            }).get();
+            let family_company = $("[name='family_company[]']").map(function () {
+                return this.value;
+            }).get();
+            let family_phone = $("[name='family_phone[]']").map(function () {
+                return this.value;
+            }).get();
             // 整理教育记录
             let education = [];
             for (let i = 0; i < edu_start_time.length; i++) {
@@ -437,6 +455,16 @@
                     reterence: job_reterence[i],
                 })
             }
+            // 整理家庭信息
+            let family = [];
+            for (let i = 0; i < family_relate.length; i++) {
+                family.push({
+                    relate: family_relate[i],
+                    name: family_name[i],
+                    company: family_company[i],
+                    phone: family_phone[i],
+                })
+            }
             $.ajax({
                 url: "{{ path("candidate/update") }}",
                 type: "post",
@@ -458,6 +486,7 @@
 
                     education: education,
                     work: work,
+                    family: family,
 
                     job_name: $("#job_name").val(),
                     job_property: $("#job_property").val(),

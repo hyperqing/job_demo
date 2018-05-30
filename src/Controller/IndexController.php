@@ -84,6 +84,7 @@ class IndexController extends Controller
 
             'education' => $form_data['education'],
             'work' => $form_data['work'],
+            'family' => $form_data['family'],
 
             'job_name' => $form_data['job_name'],
             'job_property' => $form_data['job_property'],
